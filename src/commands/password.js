@@ -22,7 +22,7 @@ export const password = (...args) => {
             }
             word += letter;
         } else if (dice > 5 && dice <= 7) {
-            // Choose a special character if allowed
+            // Choose a special character
              word += special[crypto.randomInt(0, lengthSpecial + 1)]
         } else {
             // Choose a number if allowed
