@@ -18,7 +18,7 @@ At the moment only allows you to change tabs to spaces and vice versa, along wit
 * Run commands npm install and npm link in cloned repos root
 * Tool is now usable anywhere through the command line 
 
-### Executing program
+### Usage
 
 * eetool --help, For list of available commands
 * eetool --tabs, Converts spaces to tabs in given file: eetool --tabs (file)
