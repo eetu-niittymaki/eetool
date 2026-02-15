@@ -10,6 +10,7 @@ export const image = (...args) => {
 
     if (!infile) { // Check if file given in command line arguments
         logger.warning('No file given!')
+        process.exit(1)
     }
 
     if (!validateFilename(infile, 'image', 'Wrong filetype for input file!')) process.exit(1) // Check if infile is supported
