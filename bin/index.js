@@ -14,7 +14,8 @@ try {
         '--tabs': Boolean,
         '--spaces': Boolean,
         '--password': Boolean,
-        '-c': Boolean
+        '-c': Boolean, 
+        '-s': Boolean
     })
 
     logger.debug('Received args', args)

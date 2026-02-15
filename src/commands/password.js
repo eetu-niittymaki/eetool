@@ -4,8 +4,11 @@ import createLogger from '../logger.js'
 const logger = createLogger('command:password')
 
 export const password = (...args) => {
-    const length = parseInt(args[0]) || 24
-    const copyToClipboardFlag = args.slice(1).includes('-c') // Check if args after [0] contain -c flag
+    let length = parseInt(args[0])
+    const flagIndex = length ? 1 : 0 // Check if length is given in args
+    const copyToClipboardFlag = args.slice(flagIndex).includes('-c') // Check if args after [0] contain -c flag
+    const useSpecialFlag = args.slice(flagIndex).includes('-s') // Check if args after [0] contain -s flag
+    if (!length) length = 24 // Set default length to 24 if not given by user
 
     const special = '&€$%@-+=^!?'
     const letters = 'abcdefghijklmnopqrstuvwxyz'
@@ -22,8 +25,8 @@ export const password = (...args) => {
                 letter = letter.toUpperCase()
             }
             word += letter;
-        } else if (dice > 5 && dice <= 7) {
-            word += special[crypto.randomInt(0, lengthSpecial + 1)] // Choose a special character
+        } else if (useSpecialFlag && dice > 5 && dice <= 7) {
+            word += special[crypto.randomInt(0, lengthSpecial + 1)] // Choose a special character if flag is given
         } else {
             word += crypto.randomInt(0, 10).toString() // Choose a number
         }
