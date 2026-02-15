@@ -4,7 +4,7 @@ A CLI tool written in Node.js I am developing for fun.
 
 ## Description
 
-At the moment only allows you to change tabs to spaces and vice versa, along with randomly generating a password.
+At the moment only allows you to change tabs to spaces and vice versa, randomly generating a password and reformatting images.
 
 ## Getting Started
 
@@ -24,6 +24,7 @@ At the moment only allows you to change tabs to spaces and vice versa, along wit
 * eetool --tabs, Converts spaces to tabs in given file. eetool --tabs (file)
 * eetool --spaces, Converts tabs to spaces in given file. eetool --spaces (file)
 * eetool --password, Randomnly generates a password with a default length of 24. eetool --password (length) {flags}. Optional flags: -c -> Copy to clipboard, -s -> use special characters. 
+* eetool --image, Reformat images. eetool --image (original file, i.e img.jpg ) (output file and type, i.e img.png).
 
 ## Acknowledgments
 

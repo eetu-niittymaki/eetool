@@ -6,15 +6,19 @@ import createLogger from '../src/logger.js'
 import { indentation } from '../src/commands/indentation.js'
 import { help } from '../src/commands/help.js'
 import { password } from '../src/commands/password.js'
+import { image } from '../src/commands/image.js'
 const logger = createLogger('bin')
 
 try {
     const args = arg({
+        // Main commands
         '--help': Boolean,
         '--tabs': Boolean,
         '--spaces': Boolean,
         '--password': Boolean,
-        '-c': Boolean, 
+        '--image': Boolean,
+        // Flags
+        '-c': Boolean,
         '-s': Boolean
     })
 
@@ -24,10 +28,11 @@ try {
         '--help': () => help(),
         '--tabs': () => indentation(process.argv[2], process.argv[3], process.argv[4]),
         '--spaces': () => indentation(process.argv[2], process.argv[3], process.argv[4]),
-        '--password': () => password(process.argv[3], process.argv[4], process.argv[5])
+        '--password': () => password(process.argv[3], process.argv[4], process.argv[5]),
+        '--image': () => image(process.argv[3], process.argv[4], process.argv[5])
     }
 
-    // Find matching flag in args
+    // Find matching command in args
     const command = Object.keys(args).find(key => args[key] && commandMap[key])
 
     if (commandMap[command]) {
