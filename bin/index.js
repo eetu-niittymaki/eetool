@@ -20,14 +20,18 @@ try {
 
     logger.debug('Received args', args)
 
-    if (args['--help']) {
-        help()
-    } else if (args['--spaces'] || args['--tabs']) {
-        indentation(process.argv[2], process.argv[3], process.argv[4])
-    } else if (args['--password']) {
-        password(process.argv[3], process.argv[4], process.argv[5])
-    } else {
-        console.log(`${chalk.whiteBright('Unknown command, use --help to get list of available commands')}`)
+    const commandMap = {
+        '--help': () => help(),
+        '--tabs': () => indentation(process.argv[2], process.argv[3], process.argv[4]),
+        '--spaces': () => indentation(process.argv[2], process.argv[3], process.argv[4]),
+        '--password': () => password(process.argv[3], process.argv[4], process.argv[5])
+    }
+
+    // Find matching flag in args
+    const command = Object.keys(args).find(key => args[key] && commandMap[key])
+
+    if (commandMap[command]) {
+        commandMap[command]()
     }
 
 } catch (e) {
