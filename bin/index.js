@@ -13,7 +13,8 @@ try {
         '--help': Boolean,
         '--tabs': Boolean,
         '--spaces': Boolean,
-        '--password': Boolean
+        '--password': Boolean,
+        '-c': Boolean
     })
 
     logger.debug('Received args', args)
@@ -23,7 +24,7 @@ try {
     } else if (args['--spaces'] || args['--tabs']) {
         indentation(process.argv[2], process.argv[3], process.argv[4])
     } else if (args['--password']) {
-        password(process.argv[3])
+        password(process.argv[3], process.argv[4], process.argv[5])
     }
 
 } catch (e) {

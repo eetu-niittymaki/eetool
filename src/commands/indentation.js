@@ -35,7 +35,7 @@ export const indentation = (...args) => {
     const oldType = (newType === '--spaces') ? '--tabs' : '--spaces'
     readFile(file, 'utf-8', (error, data) => {
         if (error) {
-            logger.warning(error)
+            logger.error(error)
             return
         }
         
@@ -49,10 +49,10 @@ export const indentation = (...args) => {
 
         writeFile(file, newData, 'utf-8', (error) => {
             if (error) {
-                logger.warning(error)
+                logger.error(error)
                 return
             }
-            console.log(`File ${file} updated successfully!`)
+            logger.success(`File ${file} updated successfully!`)
         })
     })
 }
