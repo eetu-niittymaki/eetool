@@ -25,6 +25,8 @@ try {
         indentation(process.argv[2], process.argv[3], process.argv[4])
     } else if (args['--password']) {
         password(process.argv[3], process.argv[4], process.argv[5])
+    } else {
+        console.log(`${chalk.whiteBright('Unknown command, use --help to get list of available commands')}`)
     }
 
 } catch (e) {
