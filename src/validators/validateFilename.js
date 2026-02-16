@@ -21,5 +21,5 @@ export const validateFilename = (file, mode, customError='') => {
         process.stdout.write(`${filetypes[i]}, ${filetypes[i + 1]}, ${filetypes[i + 2] || ''}\n`.replace('undefined', ''));
     }
 
-    return false
+    process.exit(1)
 }

@@ -8,5 +8,5 @@ export const validateFileLocation = (file) => {
     }
 
     logger.error('File not found!')
-    return false
+    process.exit(1)
 }

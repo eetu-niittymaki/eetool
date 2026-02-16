@@ -15,11 +15,11 @@ export const indentation = (...args) => {
 
     if (!file) { // Check if file given in command line arguments
         logger.warning('No file given!')
-        process.exit(1)
+        return
     }
 
     validateFilename(file, "code") // Check if filetype is supported
-    if (!validateFileLocation(file)) process.exit(1)  // Check if file actually exists
+    if (!validateFileLocation(file)) return  // Check if file actually exists
 
     const oldType = (newType === '--spaces') ? '--tabs' : '--spaces'
     readFile(file, 'utf-8', (error, data) => {

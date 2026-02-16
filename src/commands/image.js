@@ -12,10 +12,10 @@ export const image = (...args) => {
 
     if (!infile) { // Check if file given in command line arguments
         logger.warning('No file given!')
-        process.exit(1)
+        return
     }
 
-    if (!validateFilename(infile, 'image', 'Wrong filetype for input file!')) process.exit(1) // Check if infile is supported
+    validateFilename(infile, 'image', 'Wrong filetype for input file!') // Check if infile is supported
     validateFileLocation(infile) // Check if infile exists
 
     validateFilename(outfile, 'image', 'Wrong filetype for output file!') // Check if given export file is valid, give custom error if not
@@ -26,7 +26,7 @@ export const image = (...args) => {
     // Check if only width or only height is given and if they are valid integers
     if (width && !height || !width && height) {
         logger.error('Both width and height must be given as numbers to resize image!')
-        process.exit(1)
+        return
     } else if (width && height) {
         outputImage = outputImage.resize(width, height)
     }
