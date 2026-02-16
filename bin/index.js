@@ -44,6 +44,7 @@ try {
     } else {
         await logo()
         console.log(`${chalk.whiteBright('Use --help to get list of available commands')}`)
+        process.exit(0)
     }
 
 } catch (e) {
