@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import arg from 'arg'
 import chalk from 'chalk'
-import { render, renderFilled, PALETTES, getPaletteNames } from 'oh-my-logo'
+import { renderFilled } from 'oh-my-logo'
 import createLogger from '../src/logger.js'
 //import { getConfig } from '../src/config/config-mngr.js'
 import { indentation } from '../src/commands/indentation.js'
