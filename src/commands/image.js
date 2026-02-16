@@ -7,6 +7,8 @@ const logger = createLogger('command:image')
 export const image = (...args) => {
     const infile = args[0]
     const outfile = args[1]
+    const width = args[2] ? parseInt(args[2], 10) : null
+    const height = args[3] ? parseInt(args[3], 10) : null
 
     if (!infile) { // Check if file given in command line arguments
         logger.warning('No file given!')
@@ -19,11 +21,19 @@ export const image = (...args) => {
     validateFilename(outfile, 'image', 'Wrong filetype for output file!') // Check if given export file is valid, give custom error if not
 
     const format = outfile.split('.')[1]
-    sharp(infile)
-        .toFormat(format)
-        .toFile(outfile), (err, info) => {
-            if(err) logger.error(err)
-            return 
-        }
-    logger.success(`Converted to ${format.toUpperCase()}`)
+    let outputImage = sharp(infile)
+
+    // Check if only width or only height is given and if they are valid integers
+    if (width && !height || !width && height) {
+        logger.error('Both width and height must be given as numbers to resize image!')
+        process.exit(1)
+    } else if (width && height) {
+        outputImage = outputImage.resize(width, height)
+    }
+
+    outputImage
+        .toFile(outfile)
+        .then(() => logger.success(`${infile} processed to: ${format.toUpperCase()}`, 
+                                    (width && height) ? `${width}x${height}` : '')) // Print new width X height if given
+        .catch(error  => logger.error(error))
 } 

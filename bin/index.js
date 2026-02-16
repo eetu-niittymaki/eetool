@@ -29,7 +29,7 @@ try {
         '--tabs': () => indentation(process.argv[2], process.argv[3], process.argv[4]),
         '--spaces': () => indentation(process.argv[2], process.argv[3], process.argv[4]),
         '--password': () => password(process.argv[3], process.argv[4], process.argv[5]),
-        '--image': () => image(process.argv[3], process.argv[4], process.argv[5])
+        '--image': () => image(process.argv[3], process.argv[4], process.argv[5], process.argv[6])
     }
 
     // Find matching command in args
@@ -37,6 +37,8 @@ try {
 
     if (commandMap[command]) {
         commandMap[command]()
+    } else {
+        console.log(`${chalk.whiteBright('Unknown command, use --help to get list of available commands')}`)
     }
 
 } catch (e) {
