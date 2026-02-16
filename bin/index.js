@@ -8,6 +8,7 @@ import { indentation } from '../src/commands/indentation.js'
 import { help } from '../src/commands/help.js'
 import { password } from '../src/commands/password.js'
 import { image } from '../src/commands/image.js'
+import { update } from '../src/commands/update.js'
 const logger = createLogger('bin')
 
 try {
@@ -18,6 +19,7 @@ try {
         '--spaces': Boolean,
         '--password': Boolean,
         '--image': Boolean,
+        '--update': Boolean,
         // Flags
         '-c': Boolean,
         '-s': Boolean
@@ -30,7 +32,8 @@ try {
         '--tabs': () => indentation(process.argv[2], process.argv[3], process.argv[4]),
         '--spaces': () => indentation(process.argv[2], process.argv[3], process.argv[4]),
         '--password': () => password(process.argv[3], process.argv[4], process.argv[5]),
-        '--image': () => image(process.argv[3], process.argv[4], process.argv[5], process.argv[6])
+        '--image': () => image(process.argv[3], process.argv[4], process.argv[5], process.argv[6]),
+        '--update': () => update()
     }
 
     // Find matching command in args
