@@ -24,8 +24,9 @@ At the moment only allows you to change tabs to spaces and vice versa, randomly 
 
 * eetool --help, For list of available commands
 * eetool --indt, Converts tabs to spaces and vice versa in given file. eetool --indt {spaces/tabs} (file)
-* eetool --password, Randomnly generates a password with a default length of 24. eetool --password {length} {flags}. Optional flags: -c -> Copy to clipboard, -s -> use special characters. 
-* eetool --image, Reformat images, optionally also resize them. eetool --image (infile, i.e img.jpg ) (outfile, i.e img.png) {width} {height}.
+* eetool --password, Randomnly generates a password with a default length of 24. eetool --password {length} {flags}. Optional flags: -c -> Copy to clipboard, -s -> use special characters
+* eetool --image, Reformat images, optionally also resize them. eetool --image (infile, i.e img.jpg ) (outfile, i.e img.png) {width} {height}
+* eetool --markup, Allows conversion between Markup, HTML and PDF files. eetool --markup (infile) (outfile)
 * eetool --update, Check for and install updates.
 
 ## Acknowledgments

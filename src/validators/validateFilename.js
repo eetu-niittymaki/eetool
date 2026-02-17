@@ -11,7 +11,7 @@ export const validateFilename = (file, mode, customError='') => {
         'image': filetypesImage, 
         'markup': filetypesMarkup 
     }
-    
+
     const filetypes = modes[mode]
 
     for (let i = 0; i < filetypes.length; i++) {
@@ -21,7 +21,7 @@ export const validateFilename = (file, mode, customError='') => {
         }
     }
 
-    (!customError) ? logger.error('Filetype not supported!') : logger.error(customError)
+    customError ? logger.error(customError) : logger.error('Filetype not supported!')
     logger.warning('Supported filetypes:')
     for (let i = 0; i < filetypes.length; i += 3) { // Print suppoted filetypes
         process.stdout.write(`${filetypes[i]}, ${filetypes[i + 1]}, ${filetypes[i + 2] || ''}\n`.replace('undefined', ''));
