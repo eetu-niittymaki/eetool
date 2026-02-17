@@ -37,7 +37,7 @@ export const password = (...args) => {
     if (copyToClipboardFlag) {
         try {
             clipboardy.writeSync(word);
-            logger.highlight2('\nPassword copied to clipboard!')
+            logger.highlight2('\n Password copied to clipboard!')
         } catch (error) {
             logger.error(error)
         }

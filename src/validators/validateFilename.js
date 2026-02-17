@@ -4,8 +4,14 @@ const logger = createLogger('valdiate:filename')
 export const validateFilename = (file, mode, customError='') => {
     const filetypesCode =  ['py', 'js', 'jsx', 'ts', 'jsx', 'java', 'kt', 'c', 'cpp', 'cs', 'php', 'html']
     const filetypesImage = ['jpg', 'png', 'webp', 'gif', 'avif', 'tiff', 'jp2']
+    const filetypesMarkup = ['html', 'md', 'pdf']
 
-    const modes = { 'code': filetypesCode, 'image': filetypesImage }
+    const modes = { 
+        'code': filetypesCode, 
+        'image': filetypesImage, 
+        'markup': filetypesMarkup 
+    }
+    
     const filetypes = modes[mode]
 
     for (let i = 0; i < filetypes.length; i++) {

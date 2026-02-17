@@ -15,8 +15,7 @@ try {
     const args = arg({
         // Main commands
         '--help': Boolean,
-        '--tabs': Boolean,
-        '--spaces': Boolean,
+        '--indt': Boolean,
         '--password': Boolean,
         '--image': Boolean,
         '--update': Boolean,
@@ -29,8 +28,7 @@ try {
 
     const commandMap = {
         '--help': () => help(),
-        '--tabs': () => indentation(process.argv[2], process.argv[3], process.argv[4]),
-        '--spaces': () => indentation(process.argv[2], process.argv[3], process.argv[4]),
+        '--indt': () => indentation(process.argv[3], process.argv[4]),
         '--password': () => password(process.argv[3], process.argv[4], process.argv[5]),
         '--image': () => image(process.argv[3], process.argv[4], process.argv[5], process.argv[6]),
         '--update': () => update()

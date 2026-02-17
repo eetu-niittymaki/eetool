@@ -1,4 +1,5 @@
 import sharp from 'sharp'
+import path from 'path'
 import { validateFilename } from '../validators/validateFilename.js'
 import { validateFileLocation } from '../validators/validateFileLocation.js'
 import createLogger from '../logger.js'
@@ -20,7 +21,7 @@ export const image = (...args) => {
 
     validateFilename(outfile, 'image', 'Wrong filetype for output file!') // Check if given export file is valid, give custom error if not
 
-    const format = outfile.split('.')[1]
+    const format = path.extname(outfile).replace('.', '')
     let outputImage = sharp(infile)
 
     // Check if only width or only height is given and if they are valid integers

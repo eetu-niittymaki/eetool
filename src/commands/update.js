@@ -14,7 +14,7 @@ export const update = () => {
             stdio: 'inherit'
         })
         const status = execSync(
-            'git rev-list --count HEAD..@{u}', 
+            'git rev-list --count HEAD..@{u}', // Get remote head and check if local ref is behind
             { cwd: mainDirectory })
             .toString()
             .trim()

@@ -5,12 +5,17 @@ import createLogger from '../logger.js'
 const logger = createLogger('command:indentation')
 
 export const indentation = (...args) => {
-    const newType = args[0] // i.e --spaces or --tabs
+    const newType = args[0] // i.e spaces or tabs
     const file = args[1]
 
     const types = { 
-        '--spaces': ' '.repeat(4), 
-        '--tabs': '\t' 
+        'spaces': ' '.repeat(4), 
+        'tabs': '\t' 
+    }
+
+    if (!Object.keys(types).includes(newType)) { // Check if arg in obj keys
+        logger.error("Invalid argument, use 'spaces', or 'tabs' for selection!")
+        return
     }
 
     if (!file) { // Check if file given in command line arguments
@@ -21,7 +26,7 @@ export const indentation = (...args) => {
     validateFilename(file, "code") // Check if filetype is supported
     if (!validateFileLocation(file)) return  // Check if file actually exists
 
-    const oldType = (newType === '--spaces') ? '--tabs' : '--spaces'
+    const oldType = (newType === 'spaces') ? 'tabs' : 'spaces'
     readFile(file, 'utf-8', (error, data) => {
         if (error) {
             logger.error(error)
