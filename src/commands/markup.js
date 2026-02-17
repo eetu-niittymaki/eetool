@@ -112,7 +112,7 @@ const convertMD = async (infile, outfile, formatOut) => {
 
     if (formatOut === 'html') { // MD to HTML
         await fs.writeFile(outfile, String(html), 'utf8')
-    } else if (format === 'pdf') { // MD to PFD
+    } else if (formatOut === 'pdf') { // MD to PFD
         await htmlToPDF(String(html), outfile)
     }
 }
