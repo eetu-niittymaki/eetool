@@ -6,7 +6,7 @@ A CLI tool written in Node.js I am developing for fun.
 
 ## Description
 
-At the moment only allows you to change tabs to spaces and vice versa, randomly generating a password and reformatting images.
+At the moment allows you to change tabs to spaces and vice versa, randomly generating a password, reformatting images and convertig markup files. 
 
 ## Getting Started
 
